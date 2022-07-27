@@ -1,14 +1,12 @@
 package com.hunglp.start_mid.entity;
-
-import lombok.Data;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import lombok.*;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-@Data
+@Table(name = "user_tbl")
+@ToString
 public class User {
 
     @Id
@@ -19,8 +17,17 @@ public class User {
 
     private String password;
 
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "user_group",
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "group_id")})
+    private Set<Group> groups = new HashSet<>();
 
 
-
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name="user_role",
+            joinColumns = {@JoinColumn(name="user_id")},
+            inverseJoinColumns = {@JoinColumn(name="role_id")})
+    private Set<Role> roles = new HashSet<>();
 
 }

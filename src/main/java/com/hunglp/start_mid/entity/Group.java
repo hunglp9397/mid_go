@@ -1,21 +1,29 @@
 package com.hunglp.start_mid.entity;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 
 @Entity
-@Data
+@Table(name = "group_tbl")
 public class Group {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String groupName;
+
     private String description;
 
+    @JsonIgnore
+    @ManyToMany(mappedBy = "groups", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<User> users = new HashSet<>();
 
 }
