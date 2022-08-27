@@ -14,6 +14,7 @@ import java.util.Set;
 @Table(name = "group_tbl")
 public class Group {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -25,5 +26,9 @@ public class Group {
     @JsonIgnore
     @ManyToMany(mappedBy = "groups", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<User> users = new HashSet<>();
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "role_id", referencedColumnName = "id")
+    private Role role;
 
 }
