@@ -1,12 +1,14 @@
 package com.hunglp.start_mid.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Data;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@Data
 public class Role {
 
     @Id

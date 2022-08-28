@@ -1,19 +1,18 @@
 package com.hunglp.start_mid.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Data;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 
 @Entity
 @Table(name = "group_tbl")
+@Data
 public class Group {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +23,7 @@ public class Group {
     private String description;
 
     @JsonIgnore
-    @ManyToMany(mappedBy = "groups", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "groups")
     private Set<User> users = new HashSet<>();
 
     @OneToOne(cascade = CascadeType.ALL)

@@ -6,7 +6,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "user_tbl")
-@ToString
+@Data
 public class User {
 
     @Id
@@ -17,7 +17,7 @@ public class User {
 
     private String password;
 
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToMany( cascade = CascadeType.ALL)
     @JoinTable(name = "user_group",
             joinColumns = {@JoinColumn(name = "user_id")},
             inverseJoinColumns = {@JoinColumn(name = "group_id")})
