@@ -21,5 +21,10 @@ public class UserController {
     Page<UserDTO> getAllUser(Pageable pageable){
         return userService.getAllUser(pageable);
     }
+//
+//    @GetMapping("/users")
+//    List<UserDTO> getAllUser(){
+//        return userService.getUser();
+//    }
 
 }

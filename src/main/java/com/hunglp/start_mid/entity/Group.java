@@ -26,7 +26,7 @@ public class Group {
     @ManyToMany(mappedBy = "groups")
     private Set<User> users = new HashSet<>();
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     @JoinColumn(name = "role_id", referencedColumnName = "id")
     private Role role;
 

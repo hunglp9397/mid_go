@@ -11,6 +11,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -21,8 +23,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
 
+
     @Override
     public Page<UserDTO> getAllUser(Pageable pageable) {
-       return userRepository.findAll(pageable).map(userMapper::toDTO);
+        return userRepository.findAll(pageable).map(userMapper::toDTO);
     }
 }

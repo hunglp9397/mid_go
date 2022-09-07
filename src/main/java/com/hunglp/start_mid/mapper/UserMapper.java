@@ -12,9 +12,6 @@ public interface UserMapper extends GenericMapper<UserDTO, User> {
     User toEntity(UserDTO dto);
 
     @Override
-    @Mapping(source = "groups", target = "groupsDTO")
-    @Mapping(source = "roles", target = "rolesDTO")
     UserDTO toDTO(User entity);
-
 
 }
